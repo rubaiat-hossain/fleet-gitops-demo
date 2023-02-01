@@ -1,0 +1,21 @@
+apiVersion: fleet.cattle.io/v1alpha1
+kind: GitRepo
+metadata:
+  name: gitops-demo
+  namespace: clusters
+spec:
+  repo: https://github.com/USERNAME/example.app
+  branch: main
+  targetNamespace: default
+  paths:
+  - helm
+   targets:
+  - name: dev
+    clusterSelector:
+      matchLabels:
+        env: dev
+
+  - name: prod
+    clusterSelector:
+      matchLabels:
+        env: prod

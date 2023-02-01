@@ -1,0 +1,20 @@
+helm:
+  chart: "./"
+targetCustomizations:
+- name: dev
+  helm:
+    values:
+      image:
+        tag: 2.7.0
+  clusterSelector:
+    matchLabels:
+      env: dev
+
+- name: production
+  helm:
+    values:
+      image:
+        tag: 3.7.0
+  clusterSelector:
+    matchLabels:
+      env: production
